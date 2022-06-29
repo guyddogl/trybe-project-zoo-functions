@@ -15,4 +15,7 @@ describe('Testes da função HandlerElephants', () => {
     const elephantsNames = ['Ilana', 'Orval', 'Bea', 'Jefferson']
     expect(handlerElephants('names')).toEqual(elephantsNames);
   });
+  test('Testa se ao receber averageAge como parâmetro a função handlerElephants retorna a média de idade dos elefantes', () => {
+    expect(handlerElephants('averageAge')).toBeCloseTo(10.5);
+  });
 });
