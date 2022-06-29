@@ -1,4 +1,4 @@
-const { TestScheduler } = require('jest');
+// const { TestScheduler } = require('jest');
 const handlerElephants = require('../src/handlerElephants');
 
 describe('Testes da função HandlerElephants', () => {
@@ -12,7 +12,7 @@ describe('Testes da função HandlerElephants', () => {
     expect(handlerElephants('count')).toBe(4);
   });
   test('Verifica se ao receber names como parâmetro a função handlerElephants retorna um array com os nomes dos elefantes', () => {
-    const elephantsNames = ['Ilana', 'Orval', 'Bea', 'Jefferson']
+    const elephantsNames = ['Ilana', 'Orval', 'Bea', 'Jefferson'];
     expect(handlerElephants('names')).toEqual(elephantsNames);
   });
   test('Verifica se ao receber averageAge como parâmetro a função handlerElephants retorna a média de idade dos elefantes', () => {
@@ -25,8 +25,8 @@ describe('Testes da função HandlerElephants', () => {
     expect(handlerElephants('popularity')).toBe(5);
   });
   test('Verifica se ao receber availability como parâmetro a função handlerElephants retorna um array com a relação de dias em que é possível visitar elefantes', () => {
-    expect(handlerElephants('availability')).toEqual([ 'Friday', 'Saturday', 'Sunday', 'Tuesday' ]);
-    expect(handlerElephants('availability')).not.toEqual([ 'Friday', 'Saturday', 'Sunday' ]);
+    expect(handlerElephants('availability')).toEqual(['Friday', 'Saturday', 'Sunday', 'Tuesday']);
+    expect(handlerElephants('availability')).not.toEqual(['Friday', 'Saturday', 'Sunday']);
   });
   test('Verifica se retorna "Parâmetro inválido, é necessário uma string" ao identificar que o parâmetro recebido não é uma string', () => {
     expect(handlerElephants(5)).toMatch('Parâmetro inválido, é necessário uma string');
