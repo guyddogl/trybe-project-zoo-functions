@@ -30,4 +30,7 @@ describe('Testes da função HandlerElephants', () => {
   test('Verifica se retorna "Parâmetro inválido, é necessário uma string" ao identificar que o parâmetro recebido não é uma string', () => {
     expect(handlerElephants(5)).toMatch('Parâmetro inválido, é necessário uma string');
   });
+  test('Verifica se ao receber sex como parâmetro a função handlerElephants retorna null', () => {
+    expect(handlerElephants('sex')).toBeNull();
+  });
 });
