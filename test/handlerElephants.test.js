@@ -8,4 +8,7 @@ describe('Testes da função HandlerElephants', () => {
   test('Testa se ao receber undefined como parâmetro a função handlerElephants retorna undefined', () => {
     expect(handlerElephants(undefined)).toBeUndefined();
   });
+  test('Testa se ao receber count como parâmetro a função handlerElephants retorna 4', () => {
+    expect(handlerElephants('count')).toBe(4);
+  });
 });
