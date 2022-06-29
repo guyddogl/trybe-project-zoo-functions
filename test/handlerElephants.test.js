@@ -18,7 +18,10 @@ describe('Testes da função HandlerElephants', () => {
   test('Verifica se ao receber averageAge como parâmetro a função handlerElephants retorna a média de idade dos elefantes', () => {
     expect(handlerElephants('averageAge')).toBeCloseTo(10.5);
   });
-  test('Verifica se ao receber location como parâmetro a função handlerElephants retorna a a localização dos elefantes', () => {
+  test('Verifica se ao receber location como parâmetro a função handlerElephants retorna a localização dos elefantes', () => {
     expect(handlerElephants('location')).toBe('NW');
+  });
+  test('Verifica se ao receber popularity como parâmetro a função handlerElephants retorna a popularidade dos elefantes', () => {
+    expect(handlerElephants('popularity')).toBe(5);
   });
 });
