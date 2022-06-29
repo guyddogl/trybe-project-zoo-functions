@@ -11,4 +11,8 @@ describe('Testes da função HandlerElephants', () => {
   test('Testa se ao receber count como parâmetro a função handlerElephants retorna 4', () => {
     expect(handlerElephants('count')).toBe(4);
   });
+  test('Testa se ao receber names como parâmetro a função handlerElephants retorna um array com os nomes dos elefantes', () => {
+    const elephantsNames = ['Ilana', 'Orval', 'Bea', 'Jefferson']
+    expect(handlerElephants('names')).toEqual(elephantsNames);
+  });
 });
