@@ -24,4 +24,7 @@ describe('Testes da função HandlerElephants', () => {
   test('Verifica se ao receber popularity como parâmetro a função handlerElephants retorna a popularidade dos elefantes', () => {
     expect(handlerElephants('popularity')).toBe(5);
   });
+  test('Verifica se ao receber availability como parâmetro a função handlerElephants retorna um array com a relação de dias em que é possível visitar elefantes', () => {
+    expect(handlerElephants('availability')).toEqual([ 'Friday', 'Saturday', 'Sunday', 'Tuesday' ]);
+  });
 });
