@@ -35,4 +35,7 @@ describe('Testes da função getOpeningHours', () => {
   test('Verifica se getOpeningHours retorna um erro ao receber uma hora fora do intervalo de 0-12', () => {
     expect(() => { getOpeningHours('Tuesday', '13:00-AM'); }).toThrow('The hour must be between 0 and 12');
   });
+  test('Verifica se getOpeningHours retorna um erro ao receber minutos fora do intervalo de 0-59', () => {
+    expect(() => { getOpeningHours('Tuesday', '12:61-PM'); }).toThrow('The minutes must be between 0 and 59');
+  });
 });
