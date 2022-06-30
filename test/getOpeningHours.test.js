@@ -38,4 +38,7 @@ describe('Testes da função getOpeningHours', () => {
   test('Verifica se getOpeningHours retorna um erro ao receber minutos fora do intervalo de 0-59', () => {
     expect(() => { getOpeningHours('Tuesday', '12:61-PM'); }).toThrow('The minutes must be between 0 and 59');
   });
+  test('Verifica se getOpeningHours retorna um erro ao receber um dia da semana inválido', () => {
+    expect(() => { getOpeningHours('Segunda-feira', '12:30-PM'); }).toThrow('The day must be valid. Example: Monday');
+  });
 });
