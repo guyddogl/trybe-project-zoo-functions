@@ -42,10 +42,28 @@ const getEmployeeByFirstNameOrLastName = (obj) => {
   return newObjs;
 };
 
+const getEmployeeById = (obj) => {
+  const employeeFind = employees.find((element) => element.id === obj.id);
+  if (!employeeFind) throw new Error('Informações inválidas');
+  const animalsNames = employeeFind.responsibleFor
+    .map((resp) => species
+      .find((e) => e.id === resp).name);
+  const animalsLocations = employeeFind.responsibleFor
+    .map((loc) => species
+      .find((e) => e.id === loc).location);
+  const newObjs = {
+    id: employeeFind.id,
+    fullName: `${employeeFind.firstName} ${employeeFind.lastName}`,
+    species: animalsNames,
+    locations: animalsLocations,
+  };
+  return newObjs;
+};
+
 function getEmployeesCoverage(obj) {
   if (!obj) return getAllEmployees();
-  // console.log(Object.keys(obj)[0]);
-  return getEmployeeByFirstNameOrLastName(obj);
+  if (Object.keys(obj)[0] === 'name') return getEmployeeByFirstNameOrLastName(obj);
+  if (Object.keys(obj)[0] === 'id') return getEmployeeById(obj);
 }
 //  console.log(obj);
 // getEmployeesCoverage();
