@@ -25,4 +25,8 @@ describe('Testes da função getOpeningHours', () => {
   test('Verifica se getOpeningHours retorna "The zoo is open" ao receber "Wednesday" e "09:00-AM" como parâmetros', () => {
     expect(getOpeningHours('Tuesday', '09:00-AM')).toBe('The zoo is open');
   });
+  test('Verifica se getOpeningHours retorna um erro ao receber ao receber uma string no parâmetro hour', () => {
+    expect(() => { getOpeningHours('Tuesday', '9 horas'); }).toThrow('The hour should represent a number');
+    // https://medium.com/@afolabiwaheed/how-to-test-a-function-thats-expected-to-throw-error-in-jest-2419cc7c6462
+  });
 });
