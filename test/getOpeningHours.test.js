@@ -13,7 +13,7 @@ describe('Testes da função getOpeningHours', () => {
       Saturday: { open: 8, close: 10 },
       Sunday: { open: 8, close: 8 },
       Monday: { open: 0, close: 0 },
-    }
+    };
     expect(getOpeningHours()).toEqual(noParam);
   });
   test('Verifica se getOpeningHours retorna "The zoo is closed" ao receber "Monday" e "09:00-AM" como parâmetros', () => {
