@@ -40,5 +40,6 @@ describe('Testes da função getOpeningHours', () => {
   });
   test('Verifica se getOpeningHours retorna um erro ao receber um dia da semana inválido', () => {
     expect(() => { getOpeningHours('Segunda-feira', '12:30-PM'); }).toThrow('The day must be valid. Example: Monday');
+    expect(() => { getOpeningHours('Sabday', '12:30-PM'); }).toThrow('The day must be valid. Example: Monday');
   });
 });
