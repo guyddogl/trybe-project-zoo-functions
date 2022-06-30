@@ -9,23 +9,22 @@ const isValidAnimal = (animal) => species.some((animalName) => animalName.name =
 const getOpeningHours = (day) => {
   const officeHour = {};
   if (day === 'Monday') {
-    officeHour['officeHour'] = `CLOSED`;
+    officeHour.officeHour = 'CLOSED';
     return officeHour;
   }
-  const open = hours[day].open;
-  const close = hours[day].close;
-  officeHour['officeHour'] = `Open from ${open}am until ${close}pm`;
+  const { open, close } = hours[day];
+  officeHour.officeHour = `Open from ${open}am until ${close}pm`;
   return officeHour;
-}
+};
 
-const getOpeningDays = (weekDays) => {
+const getOpeningDays = () => {
   const schedule = {};
   weekDays.forEach((day) => {
     schedule[day] = getOpeningHours(day);
   });
   return schedule;
 };
-console.log(getOpeningDays(weekDays));
+console.log(getOpeningDays());
 
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget) {
