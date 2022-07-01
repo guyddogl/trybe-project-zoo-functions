@@ -1,7 +1,6 @@
 const data = require('../data/zoo_data');
 
-const { species } = data;
-const { hours } = data;
+const { hours, species } = data;
 const weekDays = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
 
 const isValidAnimal = (animal) => species.some((animalName) => animalName.name === animal);
