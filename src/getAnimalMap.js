@@ -2,8 +2,6 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 const locations = [...new Set(species.map((specie) => specie.location))];
-// console.log(locations);
-// console.log(locations.indexOf('NW'));
 
 const getAnimalsByLocation = () => {
   const animalsByLocation = {};
@@ -74,46 +72,35 @@ const getResidentsBySexSort = (location, options) => {
 
 const getAnimalsWithParam = (options) => {
   const { sex, sorted } = options;
+  const animalsNameByLocation = {};
   if (!sex && sorted === true) {
-    const animalsNameByLocation = {
-      NE: getResidentsOrdered('NE'),
-      NW: getResidentsOrdered('NW'),
-      SE: getResidentsOrdered('SE'),
-      SW: getResidentsOrdered('SW'),
-    };
+    locations.forEach((loc) => {
+      animalsNameByLocation[loc] = getResidentsOrdered(`${loc}`);
+    });
     return animalsNameByLocation;
   }
   if (sex && sorted === true) {
-    const animalsNameByLocation = {
-      NE: getResidentsBySexSort('NE', options),
-      NW: getResidentsBySexSort('NW', options),
-      SE: getResidentsBySexSort('SE', options),
-      SW: getResidentsBySexSort('SW', options),
-    };
+    locations.forEach((loc) => {
+      animalsNameByLocation[loc] = getResidentsBySexSort(`${loc}`, options);
+    });
     return animalsNameByLocation;
   }
-  const animalsNameByLocation = {
-    NE: getResidentsBySex('NE', options),
-    NW: getResidentsBySex('NW', options),
-    SE: getResidentsBySex('SE', options),
-    SW: getResidentsBySex('SW', options),
-  };
+  locations.forEach((loc) => {
+    animalsNameByLocation[loc] = getResidentsBySex(`${loc}`, options);
+  });
   return animalsNameByLocation;
 };
 
 const getAnimalsNamesByLocation = (options) => {
   if (Object.keys(options).length === 1) {
-    const animalsNameByLocation = {
-      NE: getResidents('NE', options),
-      NW: getResidents('NW', options),
-      SE: getResidents('SE', options),
-      SW: getResidents('SW', options),
-    };
+    const animalsNameByLocation = {};
+    locations.forEach((loc) => {
+      animalsNameByLocation[loc] = getResidents(`${loc}`, options);
+    });
     return animalsNameByLocation;
   }
   return getAnimalsWithParam(options);
 };
-// console.log(getAnimalsNamesByLocation());
 
 function getAnimalMap(options) {
   if (!options) return getAnimalsByLocation();
@@ -121,11 +108,5 @@ function getAnimalMap(options) {
   if (!includeNames) return getAnimalsByLocation();
   if (includeNames === true) return getAnimalsNamesByLocation(options);
 }
-
-// console.log(getAnimalMap());
-// console.log(getAnimalMap({ includeNames: true}));
-// console.log(getAnimalMap({ includeNames: true, sorted: true }));
-// console.log(JSON.stringify(getAnimalMap({ sorted: true })));
-// console.log(JSON.stringify(getAnimalMap({ sex: 'female' })));
 
 module.exports = getAnimalMap;
