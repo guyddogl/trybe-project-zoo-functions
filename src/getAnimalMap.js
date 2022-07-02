@@ -49,7 +49,6 @@ const getResidentsBySex = (location, options) => {
   Object.values(animalsByLocation)[index].forEach((animal) => {
     const objLocation = {};
     const { residents } = species.find((e) => animal === e.name);
-    // console.log(species.find((e) => animal === e.name).residents.filter((elemento) => elemento.sex === 'male'));
     objLocation[animal] = residents.filter((e) => e.sex === sex).map((e) => e.name);
     arrayNames.push(objLocation);
   });
