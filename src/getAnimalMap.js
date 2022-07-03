@@ -1,4 +1,4 @@
-const data = require('../data/zoo_data');
+const data = require('../data/zoo_data'); // 150 - 112 - 106
 
 const { species } = data;
 const locations = [...new Set(species.map((specie) => specie.location))];
@@ -15,7 +15,7 @@ const getAnimalsByLocation = () => {
   return animalsByLocation;
 };
 
-const getResidents = (location, options) => {
+const getResidents = (location) => {
   const index = locations.indexOf(location, 0);
   const animalsByLocation = getAnimalsByLocation();
   const arrayNames = [];
@@ -72,20 +72,14 @@ const getResidentsBySexSort = (location, options) => {
 const getAnimalsWithParam = (options) => {
   const { sex, sorted } = options;
   const animalsNameByLocation = {};
-  if (!sex && sorted === true) {
-    locations.forEach((loc) => {
-      animalsNameByLocation[loc] = getResidentsOrdered(`${loc}`);
-    });
-    return animalsNameByLocation;
-  }
-  if (sex && sorted === true) {
-    locations.forEach((loc) => {
-      animalsNameByLocation[loc] = getResidentsBySexSort(`${loc}`, options);
-    });
-    return animalsNameByLocation;
-  }
   locations.forEach((loc) => {
-    animalsNameByLocation[loc] = getResidentsBySex(`${loc}`, options);
+    if (!sex && sorted === true) {
+      animalsNameByLocation[loc] = getResidentsOrdered(`${loc}`);
+    } else if (sex && sorted === true) {
+      animalsNameByLocation[loc] = getResidentsBySexSort(`${loc}`, options);
+    } else {
+      animalsNameByLocation[loc] = getResidentsBySex(`${loc}`, options);
+    }
   });
   return animalsNameByLocation;
 };
@@ -94,7 +88,7 @@ const getAnimalsNamesByLocation = (options) => {
   if (Object.keys(options).length === 1) {
     const animalsNameByLocation = {};
     locations.forEach((loc) => {
-      animalsNameByLocation[loc] = getResidents(`${loc}`, options);
+      animalsNameByLocation[loc] = getResidents(`${loc}`);
     });
     return animalsNameByLocation;
   }
