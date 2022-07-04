@@ -65,11 +65,5 @@ function getEmployeesCoverage(obj) {
   if (Object.keys(obj)[0] === 'name') return getEmployeeByFirstNameOrLastName(obj);
   if (Object.keys(obj)[0] === 'id') return getEmployeeById(obj);
 }
-//  console.log(obj);
-// getEmployeesCoverage();
-// console.log(getEmployeesCoverage());
-// console.log(getEmployeesCoverage({ name: 'Guyddo' }));
-// console.log(getEmployeesCoverage({ name: 'Spry' }));
-// console.log(getEmployeesCoverage({ id: 'c1f50212-35a6-4ecd-8223-f835538526c2' }));
 
 module.exports = getEmployeesCoverage;
