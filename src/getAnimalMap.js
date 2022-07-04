@@ -28,6 +28,6 @@ const getAnimalMap = ({ includeNames, sex, sorted } = {}) => {
     animalsByLocation[loc] = getAnimalsByLocation(loc, includeNames, sex, sorted);
   });
   return animalsByLocation;
-}
+};
 
 module.exports = getAnimalMap;
